@@ -48,9 +48,9 @@ with ui.card(full_screen=True):
 with ui.sidebar(open="open",bg="#99ccff",fillable=True):
     ui.input_dark_mode(mode="light")
     ui.h2("Sidebar")
-    ui.input_selectize(id="selected_attribute",label="Select Something",choices=["Purple","Red","Blue","Yellow"])
-    ui.input_numeric(id="selected_numeric",label="Numeric Input",value=10)
-    ui.input_slider("seaborn_bin_count","Seaborn Slider",0,3,2)
-    ui.input_checkbox_group("selected_species_list","Checkboox",choices=["Table","Chair","Stool"],selected=["Chair","Stool"],inline=False)
+    ui.input_selectize(id="selected_attribute",label="Select Penguins Attribute",choices=["Bill Length","Flipper Length","Body Mass","Bill Depth"])
+    ui.input_numeric(id="selected_number_of_bins",label="Select Number of Bins",value=10)
+    ui.input_slider("seaborn_bin_count","Seaborn Slider",0,150,50)
+    ui.input_checkbox_group("selected_species_list","Select Species",choices=["Adelie","Gentroo","Chinstrap"],selected=["Gentroo","Chinstrap"],inline=False)
     ui.hr()
     ui.a("Link HERE",href="https://github.com/crsellinger/cintel-02-data",target="_blank")
