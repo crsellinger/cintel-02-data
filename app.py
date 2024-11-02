@@ -33,7 +33,7 @@ with ui.layout_columns():
     
     @render_plotly
     def plot4():
-        return px.histogram(data_frame=penguins_df,x=input.selected_species_list(),y="body_mass_g")
+        return px.histogram(data_frame=penguins_df,x="species",y="body_mass_g")
 
 #Card component for scatter plot
 with ui.card(full_screen=True):
