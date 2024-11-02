@@ -17,7 +17,7 @@ with ui.layout_columns():
     #DataGrid for penguins data
     @render.data_frame
     def plot1():
-        return render.DataGrid(penguins_df,summary=True)
+        return render.DataGrid(penguins_df)
 
     #DataTable of penguins data
     @render.data_frame
@@ -29,11 +29,11 @@ with ui.layout_columns():
 
     @render.plot(alt="Seaborn histogram plot")
     def plot3():
-        return seaborn.histplot(data=penguins_df,x="species",y="body_mass_g")
+        return seaborn.histplot(data=penguins_df,x="species",y="body_mass_g",bins=input.seaborn_bin_count())
     
     @render_plotly
     def plot4():
-        return px.histogram(data_frame=penguins_df,x="species",y="body_mass_g")
+        return px.histogram(data_frame=penguins_df,x=input.selected_species_list(),y="body_mass_g")
 
 #Card component for scatter plot
 with ui.card(full_screen=True):
@@ -50,7 +50,7 @@ with ui.sidebar(open="open",bg="#99ccff",fillable=True):
     ui.h2("Sidebar")
     ui.input_selectize(id="selected_attribute",label="Select Penguins Attribute",choices=["Bill Length","Flipper Length","Body Mass","Bill Depth"])
     ui.input_numeric(id="selected_number_of_bins",label="Select Number of Bins",value=10)
-    ui.input_slider("seaborn_bin_count","Seaborn Slider",0,150,50)
-    ui.input_checkbox_group("selected_species_list","Select Species",choices=["Adelie","Gentroo","Chinstrap"],selected=["Gentroo","Chinstrap"],inline=False)
+    ui.input_slider("seaborn_bin_count","Seaborn Slider (Plot 3)",0,150,50)
+    ui.input_checkbox_group("selected_species_list","Select Species (Plot 4)",choices=["Adelie","Gentroo","Chinstrap"],selected=["Adelie","Gentroo","Chinstrap"],inline=False)
     ui.hr()
     ui.a("Link HERE",href="https://github.com/crsellinger/cintel-02-data",target="_blank")
